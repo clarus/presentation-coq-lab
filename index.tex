@@ -130,4 +130,16 @@
     \item tiers exclu et axiome du choix activable en option
   \end{itemize}
 \end{frame}
+
+\section{Preuves réflexives}
+\begin{frame}
+  \frametitle{Preuves réflexives: idée}
+    Écrire un programme qui résout une classe de problèmes, en calculant si un problème est vrai ou faux, et le prouver correct.
+\end{frame}
+\begin{frame}
+  \frametitle{Preuves réflexives: exemple}
+  Pour un certain type d'équations différentielles, on écrit un programme en \textsc{Coq} qui renvoie \emph{vrai} si il existe une solution positive. On prouve que quand il renvoie \emph{vrai} il existe effectivement une solution positive.
+
+  Alors pour toute équation différentielle de ce type admettant une solution positive, on peut prouver que c'est le cas automatique. Il suffit d'exécuter le programme précédant et d'attendre le résultat.
+\end{frame}
 \end{document}
