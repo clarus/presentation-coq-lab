@@ -5,20 +5,46 @@
 \usepackage{lmodern}
 \usepackage[french]{babel}
 \usepackage{graphicx}
+\usepackage{tikz}
 
 \uselanguage{French}
 \languagepath{French}
 \usetheme{Green}
 
 \begin{document}
-  \title{Le logiciel de preuves formelles Coq}
-  \author{Guillaume Claret}
-  \date{12 mars 2015}
-  \maketitle
+\title{Le logiciel de preuves formelles Coq}
+\author{Guillaume Claret}
+\date{12 mars 2015}
+\maketitle
 
-  \section{Introduction}
-  \begin{frame}
-    \frametitle{Introduction}
-    Bonjour.
+\section{Démo}
+% All template changes are local to this group.
+{
+  \setbeamertemplate{navigation symbols}{}
+  \begin{frame}[plain]
+    \frametitle{Démo}
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[at=(current page.center)] {
+        \includegraphics[width=\paperwidth]{images/coq}
+      };
+    \end{tikzpicture}
   \end{frame}
+}
+
+\section{Présentation}
+\begin{frame}
+  \frametitle{Le logiciel Coq}
+  Un language pour:
+  \begin{itemize}
+    \item énoncer des théorèmes
+    \item écrire des preuves formelles
+    \item écrire des algorithmes
+  \end{itemize}
+
+  Un environnement pour:
+  \begin{itemize}
+    \item raisonner de façon interactive
+    \item organiser / distribuer les développements
+  \end{itemize}
+\end{frame}
 \end{document}
