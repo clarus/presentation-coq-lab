@@ -94,3 +94,20 @@ Module Factorial.
     apply lt_O_fact.
   Defined.
 End Factorial.
+
+Require Import Io.System.All.
+Require Import ListString.All.
+
+Import C.Notations.
+
+Definition hello_world (argv : list LString.t) : C.t System.effect unit :=
+  System.log (LString.s "Hello world!").
+
+(* Compilation *)
+Definition main := Extraction.run hello_world.
+Extraction "extraction/main" main.
+
+Definition hello_world_ok (argv : list LString.t)
+  : Spec.t (hello_world argv) tt.
+  apply (Spec.log_ok (LString.s "Hello world!")).
+Defined.
