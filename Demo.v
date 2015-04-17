@@ -82,3 +82,15 @@ Module Even.
         exact H.
   Qed.
 End Even.
+
+Module Factorial.
+  Require Import Coq.Arith.Factorial.
+
+  Check fact.
+  Check lt_O_fact.
+
+  Definition safe_fact (n : nat) : {n : nat | 0 < n}.
+    exists (fact n).
+    apply lt_O_fact.
+  Defined.
+End Factorial.
