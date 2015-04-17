@@ -3,34 +3,17 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[french]{babel}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{MnSymbol}
 
-\uselanguage{French}
-\languagepath{French}
 \usetheme{Green}
 
 \begin{document}
-\title{Le logiciel de preuves formelles Coq}
+\title{The proof software Coq}
 \author{Guillaume Claret}
-\date{12 mars 2015}
+\date{April 21st, 2015}
 \maketitle
-
-\section{Démo}
-% All template changes are local to this group.
-{
-  \setbeamertemplate{navigation symbols}{}
-  \begin{frame}[plain]
-    \frametitle{Démo}
-    \begin{tikzpicture}[remember picture,overlay]
-      \node[at=(current page.center)] {
-        \includegraphics[width=\paperwidth]{images/coq}
-      };
-    \end{tikzpicture}
-  \end{frame}
-}
 
 \section{Présentation}
 \begin{frame}
@@ -130,6 +113,20 @@
     \item tiers exclu et axiome du choix activable en option
   \end{itemize}
 \end{frame}
+
+\section{Demo}
+% All template changes are local to this group.
+{
+  \setbeamertemplate{navigation symbols}{}
+  \begin{frame}[plain]
+    \frametitle{Demo}
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[at=(current page.center)] {
+        \includegraphics[height=\paperheight]{images/coq}
+      };
+    \end{tikzpicture}
+  \end{frame}
+}
 
 \section{Preuves réflexives}
 \begin{frame}
