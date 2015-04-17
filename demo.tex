@@ -1,0 +1,13 @@
+\section{Demo}
+% All template changes are local to this group.
+{
+  \setbeamertemplate{navigation symbols}{}
+  \begin{frame}[plain]
+    \frametitle{Demo}
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[at=(current page.center)] {
+        \includegraphics[height=\paperheight]{images/coq}
+      };
+    \end{tikzpicture}
+  \end{frame}
+}
