@@ -1,17 +1,38 @@
 \section{Introduction}
 \begin{frame}
-  \frametitle{Le logiciel Coq}
-  Un language pour:
+  \frametitle{The proof system Coq}
+  A language to:
   \begin{itemize}
-    \item énoncer des théorèmes
-    \item écrire des preuves formelles
-    \item écrire des algorithmes
+    \item state theorems
+    \item write proofs verified by computer
+    \item write algorithms
   \end{itemize}
+\end{frame}
 
-  Un environnement pour:
+\begin{frame}[fragile]
+  \frametitle{Raw example}
+  \begin{verbatim}
+Fixpoint fact (n:nat) : nat :=
+  match n with
+    | O => 1
+    | S n => S n * fact n
+  end.
+
+Arguments fact n%nat.
+
+Lemma lt_O_fact n : 0 < fact n.
+Proof.
+  induction n; simpl; auto with arith.
+Qed.
+  \end{verbatim}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The proof system Coq}
+  An environment to:
   \begin{itemize}
-    \item raisonner de façon interactive
-    \item organiser / distribuer les développements
+    \item reason interactively
+    \item organize and distribute proofs
   \end{itemize}
 \end{frame}
 
