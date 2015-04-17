@@ -31,7 +31,35 @@ Module Logic.
  Abort.
 End Logic.
 
-Module Natural.
+Module Peano.
+  Inductive N : Set :=
+  | O
+  | S (n : N).
+
+  Fixpoint plus (n m : N) : N :=
+    match n with
+    | O => m
+    | S n' => S (plus n' m)
+    end.
+
+  Lemma plus_0_m : forall m, plus O m = m.
+    intro m.
+    simpl.
+    reflexivity.
+  Qed.
+
+  Lemma plus_n_0 : forall n, plus n O = n.
+    intro n.
+    induction n.
+    - simpl.
+      reflexivity.
+    - simpl.
+      rewrite IHn.
+      reflexivity.
+  Qed.
+End Peano.
+
+Module Even.
   Inductive even : nat -> Prop :=
   | even_O : even 0
   | even_S : forall n, even n -> even (S (S n)).
@@ -53,4 +81,4 @@ Module Natural.
         unfold odd in H.
         exact H.
   Qed.
-End Natural.
+End Even.
