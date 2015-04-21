@@ -18,8 +18,6 @@ Fixpoint fact (n:nat) : nat :=
     | S n => S n * fact n
   end.
 
-Arguments fact n%nat.
-
 Lemma lt_O_fact n : 0 < fact n.
 Proof.
   induction n; simpl; auto with arith.
@@ -58,7 +56,7 @@ Qed.
     \item Feit -- Thompson theorem (odd order theorem) (Gontier \& all, 12)
   \end{itemize}
 
-  Computer sciences:
+  Software written and proven in Coq:
   \begin{itemize}
     \item certified \textsc{C} compiler CompCert (Xavier Leroy \& all)
     \item \emph{Bedrock} library for low-level programs (Adam Chlipala \& all)

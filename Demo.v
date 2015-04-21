@@ -1,12 +1,16 @@
 Module Logic.
   Lemma and_proj : forall {A B : Prop}, A /\ B -> A.
-    intros A B H.
+    intros A.
+    intros B.
+    intros H.
     destruct H as [H_A H_B].
     exact H_A.
   Qed.
 
   Lemma and_commut : forall {A B : Prop}, A /\ B -> B /\ A.
-    intros A B H.
+    intros A.
+    intros B.
+    intros H.
     destruct H as [H_A H_B].
     split.
     - exact H_B.
@@ -34,12 +38,12 @@ End Logic.
 Module Peano.
   Inductive N : Set :=
   | O
-  | S (n : N).
+  | S (n : N). (* 1 + n *)
 
   Fixpoint plus (n m : N) : N :=
     match n with
     | O => m
-    | S n' => S (plus n' m)
+    | S n' => S (plus n' m) (* plus (S n') m *)
     end.
 
   Lemma plus_0_m : forall m, plus O m = m.
@@ -50,6 +54,7 @@ Module Peano.
 
   Lemma plus_n_0 : forall n, plus n O = n.
     intro n.
+    simpl.
     induction n.
     - simpl.
       reflexivity.
@@ -89,7 +94,7 @@ Module Factorial.
   Check fact.
   Check lt_O_fact.
 
-  Definition safe_fact (n : nat) : {n : nat | 0 < n}.
+  Definition safe_fact (n : nat) : {fact_n : nat & 0 < fact_n}.
     exists (fact n).
     apply lt_O_fact.
   Defined.
@@ -100,14 +105,10 @@ Require Import ListString.All.
 
 Import C.Notations.
 
-Definition hello_world (argv : list LString.t) : C.t System.effect unit :=
+Definition hello_world (argv : list LString.t)
+  : C.t System.effect unit :=
   System.log (LString.s "Hello world!").
 
 (* Compilation *)
 Definition main := Extraction.run hello_world.
 Extraction "extraction/main" main.
-
-Definition hello_world_ok (argv : list LString.t)
-  : Spec.t (hello_world argv) tt.
-  apply (Spec.log_ok (LString.s "Hello world!")).
-Defined.
